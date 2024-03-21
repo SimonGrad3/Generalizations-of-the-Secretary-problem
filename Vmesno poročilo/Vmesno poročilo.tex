@@ -1,0 +1,112 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[slovene]{babel}
+\usepackage{amsfonts,amssymb,amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+
+\def\qed{$\hfill\Box$}   % konec dokaza
+\def\qedm{\qquad\Box}   % konec dokaza v matematičnem načinu
+\newtheorem{izrek}{Izrek}
+\newtheorem{trditev}{Trditev}
+\newtheorem{posledica}{Posledica}
+\newtheorem{lema}{Lema}
+\newtheorem{pripomba}{Pripomba}
+\newtheorem{definicija}{Definicija}
+\newtheorem{zgled}{Zgled}
+
+
+\begin{document}
+
+\begin{center}
+    \Large
+    \textbf{Generalizations of the Secretary problem}
+        
+    \vspace{0.4cm}
+    \textbf{Simon Grad}
+    \vspace{0.9cm}
+    
+\end{center}
+
+    Optimal stopping theory is a branch of decision theory concerned with determining 
+    the best time to take a particular action when sequentially encountering options. 
+    This theory has applications in various fields, including economics, statistics, 
+    computer science, and even everyday decision-making scenarios. 
+    One classic problem that exemplifies optimal stopping theory is the Secretary Problem.
+
+    The Secretary Problem, also known as the Marriage Problem, 
+    poses the following scenario: 
+    Suppose you have a series of candidates interviewing for a position, 
+    and you must hire exactly one. The candidates arrive sequentially, 
+    and after each interview, you must decide whether to hire the candidate or move on to 
+    the next one. However, once you reject a candidate, they cannot be reconsidered. 
+    The goal is to maximize the probability of selecting the best candidate.  
+
+    This problem captures the essence of optimal stopping theory because it highlights 
+    the tension between the desire to gather more information (interview more candidates) and 
+    the need to make a decision within a limited timeframe. 
+    The optimal strategy for the Secretary Problem dictates that one should 
+    reject the first $\frac{1}{e}$
+    (approximately $37\%$) of candidates and then hire the first candidate who is better 
+    than all previously interviewed candidates. 
+    This strategy is proven to maximize the probability of selecting the best candidate.
+    
+    Solving the Secretary Problem analytically provides elegant insights into optimal 
+    stopping strategies. However, experimental studies offer a complementary approach to 
+    validate theoretical findings and explore nuances in decision-making behavior.
+
+    A simple Python program has been developed to simulate an example of partner selection, 
+    where there are $n$ partners numbered from 1 to $n$ (with 
+    $n$ representing the most suitable partner). Initially, we evaluate the first 
+    $m$ partners, and then we choose to marry the next partner who is superior to all 
+    previously encountered partners. The program either returns the partner we marry or 
+    notifies us if we fail to find a suitable partner.
+
+    The subsequent step involves running this program multiple times with varying 
+    stopping points ($m$) for $n = 100$ partners to demonstrate that stopping at 
+    $m = 37$ indeed yields the optimal outcome. Extending this analysis to larger values of 
+    $n$ can further enhance the accuracy of our results.
+
+    With the same experimental process we will try to answer questions like:
+    Is there a distinction when considering individuals of equal suitability, 
+    and does this affect our results? 
+    Moreover, does our outcome differ depending on whether we strictly prefer a 
+    superior candidate or are content with someone ranking equally to candidates 
+    we've previously encountered?
+    What criteria is best if we want to hire two people and want to maximize the 
+    probability of selecting the best two candidates? 
+    What criteria is best if we want to hire two people and want to minimize the average 
+    rank probability of the selected two candidates? 
+    What strategy is best if we can choose two people and we are happy if one of them is the best? 
+    What criteria is best if we want to hire k people and want to minimize the rank of the worse 
+    one that was hired? Etc.
+
+
+    I will primarily work with Python, potentially utilizing Jupyter extensions, 
+    and will focus on discrete-time case. 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
