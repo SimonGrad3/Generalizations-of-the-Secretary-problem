@@ -2,6 +2,7 @@ import random
 import math
 
 
+
 def printNajbolšiPartner(n, stop):
     """Funkcija, ki vrne izbranega partnerja izmed n partnerjev, 
     če smo smo jih zavračali do stop partnerja."""
