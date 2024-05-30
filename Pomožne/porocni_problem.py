@@ -79,6 +79,11 @@ def NajbolsiPartner_povprecje(partnerji, stop, alfa):
     return za_vedno
 
 def NajbolsiPartner_enako(partnerji, stop):
+    """Funkcija, ki vrne izbranega partnerja izmed partnerjev, 
+    če smo smo jih zavračali do stop partnerja."""
+    # partnerji ... seznam partnerjev
+    # stop ... kdaj nehamo zavračati vse partnerje 
+
     vzorec = partnerji[:stop] #vključno s stop
     poroka = partnerji[stop:]
 
@@ -97,6 +102,12 @@ def NajbolsiPartner_enako(partnerji, stop):
 
 
 def NajbolsiPartner_zadnji(partnerji, stop):
+    """Funkcija, ki vrne izbranega partnerja izmed partnerjev, 
+    če smo smo jih zavračali do stop partnerja. 
+    Ob primeru, da smo bili pri iskanju partnerja neuspešni pa se poročimo z zadnjim kandidatom."""
+    # partnerji ... seznam partnerjev
+    # stop ... kdaj nehamo zavračati vse partnerje 
+
     vzorec = partnerji[:stop] #vključno s stop
     poroka = partnerji[stop:]
 
@@ -118,7 +129,12 @@ def NajbolsiPartner_zadnji(partnerji, stop):
 
 
 def NajbolsiPartner_povprecje_zadnji(partnerji, stop, alfa):
-    
+    """Funkcija, ki vrne izbranega partnerja izmed partnerjev, 
+    če smo smo jih zavračali do stop partnerja."""
+    # partnerji ... seznam partnerjev
+    # stop ... kdaj nehamo zavračati vse partnerje 
+    # alpha ... faktor s katerim pomnožimo povprečje
+
     vzorec = partnerji[:stop] #vključno s stop
     dovolj_dober = np.mean(vzorec) * alfa
 
@@ -217,6 +233,11 @@ def Najbolsih_k_partnerjev(partnerji, stop, k):
 
 
 def Najbolsih_k_partnerjev_povprecje(partnerji, stop, alfa, k):
+    """Funkcija, ki vrne izbrana partnerja izmed partnerjev, 
+    če smo smo jih zavračali do stop partnerja."""
+    # partnerji ... seznam partnerjev
+    # stop ... kdaj nehamo zavračati vse partnerje 
+    # alpha ... faktor s katerim pomnožimo povprečje
 
     vzorec = partnerji[:stop] #vključno s stop
     dovolj_dober = np.mean(vzorec) * alfa
@@ -239,8 +260,50 @@ def Najbolsih_k_partnerjev_povprecje(partnerji, stop, alfa, k):
 
 
 
+def bonus(partnerji, stop):
+
+    vzorec = partnerji[:stop] #vključno s stop
+    poroka = partnerji[stop:]
+
+    najbolši = 0 
+    za_vedno = 0
+
+    for partner in vzorec:
+        if (partner > najbolši):
+            najbolši = partner
+   
+    for partner in poroka:
+        if (partner > najbolši):
+            za_vedno = partner
+            break
+    
+    if za_vedno == 0:
+        za_vedno = random.randint(0,1) * max(partnerji)
+   
+    return za_vedno
 
 
+def bonus2(partnerji, stop,p):
+
+    vzorec = partnerji[:stop] #vključno s stop
+    poroka = partnerji[stop:]
+
+    najbolši = 0 
+    za_vedno = 0
+
+    for partner in vzorec:
+        if (partner > najbolši):
+            najbolši = partner
+   
+    for partner in poroka:
+        if (partner > najbolši) and (random.random() > p):
+            za_vedno = partner
+            break
+    
+    if za_vedno == 0:
+        za_vedno = random.randint(0,1) * max(partnerji)
+   
+    return za_vedno
 
 
 
